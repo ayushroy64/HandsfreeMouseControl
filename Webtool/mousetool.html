@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+var name="";
+$(document).ready(function(){
+   var delay=2000, setTimeoutConst;
+   $('.a').hover(function(){
+		var temp = this.value;
+		setTimeoutConst = setTimeout(function(){
+		   writeLetter(temp);
+		}, delay);
+   },function(){
+		clearTimeout(setTimeoutConst );
+   })
+})
+
+function writeLetter(val)
+{
+	if(val=="Clear All")
+	{
+		name="";
+		document.getElementById('txt').value=name;
+	}
+	else if(val=="Backspace")
+	{
+		var txttemp=name.substring(0, name.length-1);
+		name=txttemp;
+		document.getElementById('txt').value=name;
+	}
+	else if(val=="Space")
+	{
+		name=name+" ";
+		document.getElementById('txt').value=name;
+	}
+	else if(val=="123")
+	{
+		document.getElementById("alpha").style.display="none";
+		document.getElementById("numbers").style.display="block";
+		document.getElementById("extra").style.display="none";
+	}
+	else if(val=="ABC")
+	{
+		document.getElementById("alpha").style.display="block";
+		document.getElementById("extra").style.display="block";
+		document.getElementById("numbers").style.display="none";
+	}
+	else{
+	var temp=val;
+	name=name+temp;
+	document.getElementById('txt').value=name;
+	}
+}
+function numberFunction()
+{
+	var x = document.getElementById("numbers");
+	x.style.display="none";
+}
+
+</script>
+<style>
+	body {
+  background: #2B322A;
+  font-size: 62.5%;
+}
+
+.container {
+  padding: 2em;
+}
+
+button,
+button::after {
+  -webkit-transition: all 2s;
+	-moz-transition: all 2s;
+  -o-transition: all 2s;
+	transition: all 2s;
+}
+
+button {
+  background: none;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em 2em;
+  padding: 1em 2em;
+  position: relative;
+  float:left;
+  text-transform: uppercase;
+}
+
+button::before,
+button::after {
+  background: #fff;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+button:hover {
+  color: #2B322A;
+}
+
+.btn-2::after {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 0;
+}
+
+.btn-2:hover:after {
+  width: 100%;
+}
+
+#txt{
+	width: 50%;
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	text-align:center;
+	font-size: 20px;
+}
+
+</style>
+</head>
+<body onload="numberFunction()">
+
+<div style="text-align:center">
+	<br/><br/>
+	<input type="text" id="txt"/>
+	<!-- <button class="btn-2 a"  value="Z" style="padding:10px 20px;margin:0px 240px 0px 0px;float:right">SEND</button> -->
+</div>
+<div class="container" id="alpha">
+  <button class="btn-2 a"  value="A">A</button>
+  <button class="btn-2 a"  value="B">B</button>
+  <button class="btn-2 a"  value="C">C</button>
+  <button class="btn-2 a"  value="D">D</button>
+  <button class="btn-2 a"  value="E">E</button>
+  <button class="btn-2 a"  value="F">F</button>
+  <button class="btn-2 a"  value="G">G</button>
+  <button class="btn-2 a"  value="H">H</button>
+  <button class="btn-2 a"  value="I">I</button>
+  <button class="btn-2 a"  value="J">J</button>
+  <button class="btn-2 a"  value="K">K</button>
+  <button class="btn-2 a"  value="L">L</button>
+  <button class="btn-2 a"  value="M">M</button>
+  <button class="btn-2 a"  value="N">N</button>
+  <button class="btn-2 a"  value="O">O</button>
+  <button class="btn-2 a"  value="P">P</button>
+  <button class="btn-2 a"  value="Q">Q</button>
+  <button class="btn-2 a"  value="R">R</button>
+  <button class="btn-2 a"  value="S">S</button>
+  <button class="btn-2 a"  value="T">T</button>
+  <button class="btn-2 a"  value="U">U</button>
+  <button class="btn-2 a"  value="V">V</button>
+  <button class="btn-2 a"  value="W">W</button>
+  <button class="btn-2 a"  value="X">X</button>
+  <button class="btn-2 a"  value="Y">Y</button>
+  <button class="btn-2 a"  value="Z">Z</button>
+  <button class="btn-2 a"  value="123" style="padding:20px 25px 13px 25px;">123</button>
+</div>
+<div class="container" id="numbers" style="margin-top:100px">
+	<button class="btn-2 a"  value="1">1</button>
+	<button class="btn-2 a"  value="2">2</button>
+	<button class="btn-2 a"  value="3">3</button>
+	<button class="btn-2 a"  value="4">4</button>
+	<button class="btn-2 a"  value="5">5</button>
+	<button class="btn-2 a"  value="6">6</button>
+	<button class="btn-2 a"  value="7">7</button>
+	<button class="btn-2 a"  value="8">8</button>
+	<button class="btn-2 a"  value="9">9</button>
+	<button class="btn-2 a"  value="0">0</button>
+	<button class="btn-2 a"  value="Clear All">Clear All</button>
+	<button class="btn-2 a"  value="Space" style="padding:1em 12.2em">Space</button>
+	<button class="btn-2 a"  value="Backspace">Backspace</button>
+	<button class="btn-2 a"  value="ABC">ABC</button>
+</div>
+<div id="extra">
+	<button class="btn-2 a"  value="Clear All" style="padding:1em 5em;float:left;margin-left:3.2em">Clear All</button>
+	<button class="btn-2 a"  value="Space" style="padding:1em 16.5em;float:left">Space</button>
+	<button class="btn-2 a"  value="Backspace" style="padding:1em 5em;float:left">Backspace</button>
+</div>
+
+<div class="container">
+	<button class="btn-2 a"  value="I Need Water">I Need Water</button>
+	<button class="btn-2 a"  value="I Am Hungry">I Am Hungry</button>
+</div>
+
+</body>
+</html>
